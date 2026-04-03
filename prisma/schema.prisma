@@ -1,0 +1,494 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ─── Enums ───────────────────────────────────────────────
+
+enum Role {
+  USER
+  SUPER_ADMIN
+}
+
+enum Plan {
+  FREE
+  PRO
+  BUSINESS
+}
+
+enum Language {
+  FR
+  EN
+  ES
+  PT
+}
+
+enum Theme {
+  DARK
+  LIGHT
+  SYSTEM
+}
+
+enum EmailProvider {
+  GMAIL
+  OUTLOOK
+}
+
+enum EmailFolder {
+  INBOX
+  SENT
+  DRAFTS
+  TRASH
+}
+
+enum AffaireStatut {
+  DEVIS
+  EN_COURS
+  TERMINE
+  FACTURE
+}
+
+enum DemandePriceStatut {
+  ENVOYEE
+  REPONDUE
+  REFUSEE
+}
+
+enum AiModel {
+  HAIKU
+  SONNET
+}
+
+enum AiFeedback {
+  POSITIF
+  NEGATIF
+}
+
+enum PlanningSource {
+  CONTRAT
+  MANUEL
+  EMAIL
+}
+
+// ─── Auth (NextAuth) ─────────────────────────────────────
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ─── User ────────────────────────────────────────────────
+
+model User {
+  id                   String    @id @default(cuid())
+  email                String    @unique
+  emailVerified        DateTime?
+  name                 String?
+  image                String?
+  hashedPassword       String?
+  role                 Role      @default(USER)
+  plan                 Plan      @default(FREE)
+  planExpiresAt        DateTime?
+  language             Language  @default(FR)
+  theme                Theme     @default(SYSTEM)
+  metier               String?
+  stripeCustomerId     String?   @unique
+  stripeSubscriptionId String?   @unique
+  paymentFailed        Boolean   @default(false)
+  aiCallsThisMonth     Int       @default(0)
+  aiCallsResetAt       DateTime?
+  onboardingCompleted  Boolean   @default(false)
+  emailConnected       Boolean   @default(false)
+  emailProvider        EmailProvider?
+  emailToken           String?   @db.Text
+  emailRefreshToken    String?   @db.Text
+  deletedAt            DateTime?
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+
+  accounts       Account[]
+  sessions       Session[]
+  organizations  Organization[]
+  aiCalls        AiCall[]
+  aiInteractions AiInteraction[]
+  auditLogs      AuditLog[]      @relation("AuditAdmin")
+  auditTargets   AuditLog[]      @relation("AuditTarget")
+  passwordResets PasswordResetToken[]
+}
+
+// ─── Organization ────────────────────────────────────────
+
+model Organization {
+  id                String    @id @default(cuid())
+  name              String
+  userId            String
+  plan              Plan      @default(FREE)
+  siret             String?
+  adresse           String?
+  logo              String?
+  emailFacturation  String?
+  tva               String?
+  trialEndsAt       DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  affaires      Affaire[]
+  emails        Email[]
+  emailDrafts   EmailDraft[]
+  emailFolders  EmailFolderCustom[]
+  appelsOffres  AppelOffres[]
+  contrats      Contrat[]
+  pvs           PV[]
+  fournisseurs  Fournisseur[]
+  plannings     Planning[]
+  documents     Document[]
+}
+
+// ─── Affaire ─────────────────────────────────────────────
+
+model Affaire {
+  id          String         @id @default(cuid())
+  orgId       String
+  titre       String
+  client      String?
+  adresse     String?
+  statut      AffaireStatut  @default(DEVIS)
+  montantHT   Float?
+  dateDebut   DateTime?
+  dateFin     DateTime?
+  notes       String?        @db.Text
+  tags        String[]
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  organization  Organization   @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  emails        Email[]
+  appelsOffres  AppelOffres[]
+  contrats      Contrat[]
+  pvs           PV[]
+  plannings     Planning[]
+  documents     Document[]
+}
+
+// ─── Email ───────────────────────────────────────────────
+
+model Email {
+  id                String       @id @default(cuid())
+  orgId             String
+  externalId        String?
+  threadId          String?
+  from              String?
+  fromEmail         String?
+  to                String?
+  cc                String?
+  subject           String?
+  body              String?      @db.Text
+  bodyHtml          String?      @db.Text
+  folder            EmailFolder  @default(INBOX)
+  isRead            Boolean      @default(false)
+  isStarred         Boolean      @default(false)
+  hasAttachment     Boolean      @default(false)
+  receivedAt        DateTime?
+  aiClassification  String?
+  aiSuggestion      String?      @db.Text
+  aiSuggestedTone   String?
+  labels            String[]
+  affaireId         String?
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+
+  organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  affaire      Affaire?     @relation(fields: [affaireId], references: [id], onDelete: SetNull)
+  drafts       EmailDraft[]
+}
+
+model EmailDraft {
+  id       String  @id @default(cuid())
+  orgId    String
+  emailId  String?
+  to       String?
+  subject  String?
+  body     String? @db.Text
+  tone     String?
+  status   String  @default("draft")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  email        Email?       @relation(fields: [emailId], references: [id], onDelete: SetNull)
+}
+
+model EmailFolderCustom {
+  id       String  @id @default(cuid())
+  orgId    String
+  label    String
+  color    String?
+  icon     String?
+  isSystem Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+}
+
+// ─── Appel d'Offres ──────────────────────────────────────
+
+model AppelOffres {
+  id               String   @id @default(cuid())
+  orgId            String
+  affaireId        String?
+  titre            String
+  client           String?
+  fichierUrl       String?
+  statut           String   @default("NOUVEAU")
+  lotsExtraits     Json?
+  lotsSelectionnes Json?
+  dateReception    DateTime?
+  dateLimite       DateTime?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  organization  Organization    @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  affaire       Affaire?        @relation(fields: [affaireId], references: [id], onDelete: SetNull)
+  demandesPrix  DemandePrice[]
+}
+
+model DemandePrice {
+  id             String             @id @default(cuid())
+  aoId           String
+  fournisseurId  String
+  lots           Json?
+  prixCible      Float?
+  statut         DemandePriceStatut @default(ENVOYEE)
+  reponse        String?            @db.Text
+  envoyeeLe      DateTime?
+  repondueLe     DateTime?
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+
+  appelOffres  AppelOffres  @relation(fields: [aoId], references: [id], onDelete: Cascade)
+  fournisseur  Fournisseur  @relation(fields: [fournisseurId], references: [id], onDelete: Cascade)
+}
+
+// ─── Contrat ─────────────────────────────────────────────
+
+model Contrat {
+  id          String   @id @default(cuid())
+  orgId       String
+  affaireId   String?
+  titre       String
+  fichierUrl  String?
+  resumeIA    Json?
+  alertes     Json?
+  statut      String   @default("NOUVEAU")
+  analyseLe   DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  affaire      Affaire?     @relation(fields: [affaireId], references: [id], onDelete: SetNull)
+}
+
+// ─── PV ──────────────────────────────────────────────────
+
+model PV {
+  id               String   @id @default(cuid())
+  orgId            String
+  affaireId        String?
+  titre            String
+  contenu          String?  @db.Text
+  fichierUrl       String?
+  signatureClient  String?  @db.Text
+  signeLe          DateTime?
+  statut           String   @default("BROUILLON")
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  affaire      Affaire?     @relation(fields: [affaireId], references: [id], onDelete: SetNull)
+}
+
+// ─── Fournisseur ─────────────────────────────────────────
+
+model Fournisseur {
+  id           String   @id @default(cuid())
+  orgId        String
+  nom          String
+  email        String?
+  telephone    String?
+  specialites  String[]
+  notes        String?  @db.Text
+  actif        Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  organization  Organization   @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  demandesPrix  DemandePrice[]
+}
+
+// ─── Planning ────────────────────────────────────────────
+
+model Planning {
+  id           String         @id @default(cuid())
+  orgId        String
+  affaireId    String?
+  taches       Json?
+  version      Int            @default(1)
+  genereDepuis PlanningSource @default(MANUEL)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  affaire      Affaire?     @relation(fields: [affaireId], references: [id], onDelete: SetNull)
+}
+
+// ─── Document ────────────────────────────────────────────
+
+model Document {
+  id         String   @id @default(cuid())
+  orgId      String
+  type       String?
+  titre      String
+  fichierUrl String?
+  taille     Int?
+  mimeType   String?
+  affaireId  String?
+  metadata   Json?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  affaire      Affaire?     @relation(fields: [affaireId], references: [id], onDelete: SetNull)
+}
+
+// ─── AI ──────────────────────────────────────────────────
+
+model AiPrompt {
+  id                 String   @id @default(cuid())
+  key                String   @unique
+  label              String
+  description        String?  @db.Text
+  systemPrompt       String   @db.Text
+  userPromptTemplate String   @db.Text
+  model              AiModel  @default(SONNET)
+  maxTokens          Int      @default(1024)
+  temperature        Float    @default(0.7)
+  isActive           Boolean  @default(true)
+  version            Int      @default(1)
+  updatedBy          String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  history AiPromptHistory[]
+}
+
+model AiPromptHistory {
+  id                 String   @id @default(cuid())
+  promptId           String
+  systemPrompt       String   @db.Text
+  userPromptTemplate String   @db.Text
+  model              AiModel
+  maxTokens          Int
+  temperature        Float
+  modifiedBy         String?
+  modifiedAt         DateTime @default(now())
+
+  prompt AiPrompt @relation(fields: [promptId], references: [id], onDelete: Cascade)
+}
+
+model AiCall {
+  id           String   @id @default(cuid())
+  userId       String
+  orgId        String?
+  feature      String
+  model        String
+  inputTokens  Int      @default(0)
+  outputTokens Int      @default(0)
+  cacheHit     Boolean  @default(false)
+  costUsd      Float    @default(0)
+  durationMs   Int      @default(0)
+  createdAt    DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model AiInteraction {
+  id        String      @id @default(cuid())
+  orgId     String?
+  userId    String
+  feature   String
+  input     String      @db.Text
+  output    String      @db.Text
+  feedback  AiFeedback?
+  createdAt DateTime    @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ─── Admin ───────────────────────────────────────────────
+
+model AdminConfig {
+  key       String   @id
+  value     String   @db.Text
+  updatedAt DateTime @updatedAt
+  updatedBy String?
+}
+
+model AuditLog {
+  id           String   @id @default(cuid())
+  adminId      String
+  action       String
+  targetUserId String?
+  metadata     Json?
+  ip           String?
+  createdAt    DateTime @default(now())
+
+  admin  User  @relation("AuditAdmin", fields: [adminId], references: [id], onDelete: Cascade)
+  target User? @relation("AuditTarget", fields: [targetUserId], references: [id], onDelete: SetNull)
+}
+
+model PasswordResetToken {
+  id        String    @id @default(cuid())
+  userId    String
+  token     String    @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

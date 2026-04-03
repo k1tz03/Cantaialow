@@ -2,35 +2,63 @@
 
 import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Briefcase, Mail, FileText, PenTool } from "lucide-react";
+import { Briefcase, Mail, FileText, PenTool, Loader2 } from "lucide-react";
+
+interface DashboardStats {
+  activeAffaires: number;
+  unreadEmails: number;
+  pendingRequests: number;
+  pendingSignatures: number;
+}
 
 export default function DashboardPage() {
   const { data: session } = useSession();
   const t = useTranslations("dashboard");
 
-  const stats = [
+  const [stats, setStats] = useState<DashboardStats | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchStats() {
+      try {
+        const res = await fetch("/api/dashboard");
+        if (res.ok) {
+          const data = await res.json();
+          setStats(data);
+        }
+      } catch {
+        // ignore
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchStats();
+  }, []);
+
+  const kpis = [
     {
       label: t("activeAffaires"),
-      value: "0",
+      value: stats?.activeAffaires ?? 0,
       icon: Briefcase,
       color: "text-accent",
     },
     {
       label: t("unreadEmails"),
-      value: "0",
+      value: stats?.unreadEmails ?? 0,
       icon: Mail,
       color: "text-info",
     },
     {
       label: t("pendingRequests"),
-      value: "0",
+      value: stats?.pendingRequests ?? 0,
       icon: FileText,
       color: "text-accent",
     },
     {
       label: t("pendingSignatures"),
-      value: "0",
+      value: stats?.pendingSignatures ?? 0,
       icon: PenTool,
       color: "text-success",
     },
@@ -43,15 +71,19 @@ export default function DashboardPage() {
       </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {stats.map((stat) => (
-          <Card key={stat.label}>
+        {kpis.map((kpi) => (
+          <Card key={kpi.label}>
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-muted-foreground">{stat.label}</p>
-                  <p className="text-3xl font-bold mt-1">{stat.value}</p>
+                  <p className="text-sm text-muted-foreground">{kpi.label}</p>
+                  {loading ? (
+                    <Loader2 className="w-5 h-5 mt-2 animate-spin text-muted-foreground" />
+                  ) : (
+                    <p className="text-3xl font-bold mt-1">{kpi.value}</p>
+                  )}
                 </div>
-                <stat.icon className={`w-8 h-8 ${stat.color} opacity-80`} />
+                <kpi.icon className={`w-8 h-8 ${kpi.color} opacity-80`} />
               </div>
             </CardContent>
           </Card>

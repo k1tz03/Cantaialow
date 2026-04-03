@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api
+Disallow: /dashboard
+Disallow: /settings
+Disallow: /emails
+Disallow: /affaires
+Disallow: /contrats
+Disallow: /documents
+Disallow: /fournisseurs
+Disallow: /planning
+Disallow: /assistant
+
+Sitemap: https://conductoros.com/sitemap.xml

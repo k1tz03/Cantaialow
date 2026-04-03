@@ -68,7 +68,8 @@
     "assistant": "Assistente IA",
     "settings": "Configurações",
     "admin": "Administração",
-    "guide": "Guia"
+    "guide": "Guia",
+    "distribution": "Distribuição"
   },
   "dashboard": {
     "welcome": "Bem-vindo, {name}",
@@ -301,6 +302,7 @@
     "prompts": "Prompts IA",
     "config": "Configuração",
     "audit": "Registro de auditoria",
+    "roadmap": "Roteiro",
     "totalUsers": "Usuários cadastrados",
     "activeUsers": "Ativos este mês",
     "mrr": "MRR",
@@ -330,5 +332,142 @@
     "uploadFailed": "O envio falhou. Tente novamente.",
     "networkError": "Erro de rede. Verifique sua conexão.",
     "sessionExpired": "Sua sessão expirou. Faça login novamente."
+  },
+  "distribution": {
+    "title": "Estratégia de distribuição",
+    "intro": "Guia completo para aumentar sua visibilidade e conquistar novos clientes no setor da construção. Aplique essas estratégias para maximizar seu crescimento comercial.",
+    "strategies": {
+      "digitalPresence": {
+        "title": "Presença digital",
+        "actions": {
+          "0": "Criar um site profissional com portfólio de projetos",
+          "1": "Otimizar seu perfil no Google Meu Negócio com fotos e avaliações",
+          "2": "Publicar regularmente no LinkedIn e Facebook",
+          "3": "Cadastrar sua empresa em diretórios especializados de construção"
+        }
+      },
+      "professionalNetwork": {
+        "title": "Rede profissional",
+        "actions": {
+          "0": "Desenvolver parcerias com arquitetos e gestores de obra",
+          "1": "Manter relacionamentos com subempreiteiros de confiança",
+          "2": "Participar de feiras e eventos do setor",
+          "3": "Associar-se a entidades profissionais do setor"
+        }
+      },
+      "commercialProspection": {
+        "title": "Prospecção comercial",
+        "actions": {
+          "0": "Monitorar licitações públicas e privadas regularmente",
+          "1": "Abordar diretamente incorporadoras e construtoras",
+          "2": "Oferecer orçamentos gratuitos para projetos qualificados",
+          "3": "Implementar um CRM para acompanhar seu funil de vendas"
+        }
+      },
+      "reputation": {
+        "title": "Reputação e avaliações",
+        "actions": {
+          "0": "Solicitar avaliações no Google após cada projeto",
+          "1": "Criar estudos de caso detalhados dos seus melhores projetos",
+          "2": "Responder a todas as avaliações (positivas e negativas)",
+          "3": "Exibir suas certificações e selos de qualidade"
+        }
+      },
+      "contentMarketing": {
+        "title": "Marketing de conteúdo",
+        "actions": {
+          "0": "Escrever artigos de blog sobre sua experiência profissional",
+          "1": "Publicar vídeos antes/depois das suas obras",
+          "2": "Compartilhar depoimentos de clientes em formato de vídeo",
+          "3": "Criar guias práticos para clientes potenciais"
+        }
+      },
+      "paidAdvertising": {
+        "title": "Publicidade paga",
+        "actions": {
+          "0": "Criar campanhas no Google Ads com palavras-chave locais",
+          "1": "Segmentar proprietários via Facebook e Instagram Ads",
+          "2": "Investir em posicionamento local pago",
+          "3": "Testar campanhas em plataformas especializadas de construção"
+        }
+      }
+    },
+    "metrics": {
+      "title": "Indicadores-chave para acompanhar",
+      "description": "Meça a eficácia da sua estratégia de distribuição com estes indicadores de desempenho.",
+      "websiteVisitors": {
+        "value": "500+",
+        "label": "Visitantes mensais",
+        "description": "Meta de tráfego do site após 6 meses"
+      },
+      "leadsGenerated": {
+        "value": "30-50",
+        "label": "Leads por mês",
+        "description": "Pedidos de orçamento e contatos qualificados"
+      },
+      "proposalsSent": {
+        "value": "15-20",
+        "label": "Orçamentos enviados",
+        "description": "Propostas comerciais mensais"
+      },
+      "conversionRate": {
+        "value": "25-35%",
+        "label": "Taxa de conversão",
+        "description": "Orçamentos assinados / orçamentos enviados"
+      },
+      "funnelLabel": "Funil de conversão",
+      "funnelDescription": "Visitantes → Leads → Orçamentos → Clientes: otimize cada etapa para maximizar seus resultados."
+    }
+  },
+  "roadmap": {
+    "title": "Roteiro do produto",
+    "subtitle": "Visão e planejamento do desenvolvimento do ConductorOS",
+    "statuses": {
+      "done": "Concluído",
+      "inProgress": "Em andamento",
+      "planned": "Planejado"
+    },
+    "phases": {
+      "q1": {
+        "quarter": "T1 2026",
+        "title": "Plataforma principal",
+        "status": "done",
+        "features": {
+          "0": "Email IA — classificação e resposta automática",
+          "1": "Análise PDF — extração de tripla camada",
+          "2": "Análise de contratos — resumo e alertas"
+        }
+      },
+      "q2": {
+        "quarter": "T2 2026",
+        "title": "Funcionalidades avançadas",
+        "status": "inProgress",
+        "features": {
+          "0": "Integração de planejamento",
+          "1": "Gestão de fornecedores",
+          "2": "Aplicativo móvel"
+        }
+      },
+      "q3": {
+        "quarter": "T3 2026",
+        "title": "Empresarial",
+        "status": "planned",
+        "features": {
+          "0": "Suporte multi-organização",
+          "1": "Modelos IA personalizados",
+          "2": "Acesso API"
+        }
+      },
+      "q4": {
+        "quarter": "T4 2026",
+        "title": "Escala",
+        "status": "planned",
+        "features": {
+          "0": "Solução marca branca",
+          "1": "Marketplace de integrações",
+          "2": "Expansão internacional"
+        }
+      }
+    }
   }
 }

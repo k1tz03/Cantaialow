@@ -68,7 +68,8 @@
     "assistant": "Assistant IA",
     "settings": "Paramètres",
     "admin": "Administration",
-    "guide": "Guide"
+    "guide": "Guide",
+    "distribution": "Distribution"
   },
   "dashboard": {
     "welcome": "Bienvenue, {name}",
@@ -301,6 +302,7 @@
     "prompts": "Prompts IA",
     "config": "Configuration",
     "audit": "Journal d'audit",
+    "roadmap": "Feuille de route",
     "totalUsers": "Utilisateurs inscrits",
     "activeUsers": "Actifs ce mois",
     "mrr": "MRR",
@@ -330,5 +332,162 @@
     "uploadFailed": "L'upload a échoué. Veuillez réessayer.",
     "networkError": "Erreur réseau. Vérifiez votre connexion.",
     "sessionExpired": "Votre session a expiré. Veuillez vous reconnecter."
+  },
+  "guide": {
+    "title": "Guide de creation d'entreprise BTP",
+    "subtitle": "Toutes les etapes pour creer votre entreprise de construction en France, de la forme juridique a vos premiers chantiers.",
+    "step1Title": "Choisir votre statut juridique",
+    "step1Description": "Le choix du statut juridique est la premiere decision cle. Voici les principales options :\n\n- SARL : Responsabilite limitee, 2 associes minimum. Ideal pour s'associer avec un capital social libre. Charges sociales d'environ 45%.\n- SAS : Grande flexibilite statutaire, president assimile salarie. Parfaite pour lever des fonds ou integrer des investisseurs.\n- EURL : Version unipersonnelle de la SARL, un seul associe. Bonne protection du patrimoine personnel.\n- EI (Entreprise Individuelle) : Simple a creer, pas de capital minimum. Attention : responsabilite illimitee sur les biens personnels.\n- Auto-entrepreneur (micro-entreprise) : Demarrage rapide, comptabilite simplifiee. Plafond de CA a 77 700 EUR (prestations). Ideal pour tester le marche.\n\nConsultez un expert-comptable pour choisir le statut adapte a votre situation personnelle et vos ambitions de croissance.",
+    "step2Title": "Business plan et previsions financieres",
+    "step2Description": "Un business plan solide est indispensable pour convaincre les banques et structurer votre activite.\n\nElements essentiels :\n- Resume executif de votre projet\n- Etude de marche local (concurrence, demande, prix pratiques)\n- Previsions de chiffre d'affaires sur 3 ans\n- Plan de tresorerie mensuel (les decalages de paiement sont frequents dans le BTP)\n- Besoins en investissement : vehicules, outillage, EPI, logiciels\n- Calcul du seuil de rentabilite\n\nDans le BTP, prevoyez un fonds de roulement consequent. Les delais de paiement peuvent atteindre 60 jours, voire plus avec les marches publics.",
+    "step3Title": "Immatriculation et demarches administratives",
+    "step3Description": "Les etapes administratives pour officialiser votre entreprise :\n\n1. Rediger les statuts (ou declaration d'activite pour EI/auto-entrepreneur)\n2. Deposer le capital social a la banque\n3. Publier une annonce legale dans un journal habilite\n4. Immatriculer votre entreprise au greffe du tribunal de commerce\n5. Obtenir votre extrait Kbis (carte d'identite de l'entreprise)\n6. Recevoir votre numero SIRET et code APE\n7. S'inscrire a la chambre des metiers si activite artisanale\n\nPensez aussi a ouvrir un compte bancaire professionnel dedie et a souscrire vos assurances obligatoires avant le demarrage de l'activite.",
+    "step4Title": "Obtenir les assurances obligatoires",
+    "step4Description": "Dans le BTP, les assurances sont non negociables et obligatoires par la loi :\n\n- Assurance RC Pro (Responsabilite Civile Professionnelle) : Couvre les dommages causes aux tiers pendant vos prestations. Obligatoire avant tout chantier.\n- Assurance decennale : Obligatoire pour tous les constructeurs. Couvre les malfacons pendant 10 ans apres la reception des travaux. Sans elle, vous ne pouvez pas exercer legalement.\n- Assurance vehicule pro : Pour vos utilitaires et engins de chantier.\n- Multirisque professionnelle : Protege vos locaux, materiel et stock.\n\nComparez au moins 3 devis. Les primes varient selon votre corps de metier, votre CA previsionnel et votre experience. Budget annuel a prevoir : 3 000 a 15 000 EUR selon l'activite.",
+    "step5Title": "Mettre en place la comptabilite et la facturation",
+    "step5Description": "Une gestion comptable rigoureuse est indispensable dans le BTP :\n\n- Choisissez un expert-comptable specialise BTP (il connait les specificites : situations de travaux, retenues de garantie, sous-traitance)\n- Mettez en place un logiciel de facturation conforme (mentions obligatoires, auto-liquidation de TVA pour la sous-traitance)\n- Gerez vos devis avec precision : detail des lots, conditions de reglement, validite\n- Suivez votre tresorerie au quotidien : les decalages de paiement sont le premier risque\n- Anticipez la TVA : regime reel simplifie ou normal selon votre CA\n- Mettez en place le suivi analytique par chantier pour connaitre votre rentabilite reelle\n\nBudget expert-comptable : 150 a 500 EUR/mois selon la complexite.",
+    "step6Title": "Trouver vos premiers clients et chantiers",
+    "step6Description": "Strategies pour decrocher vos premiers contrats :\n\n- Reseau personnel et professionnel : informez votre entourage, anciens collegues, maitres d'oeuvre\n- Repondre aux appels d'offres publics (marches en ligne, plateformes de dematerialisation)\n- Inscription sur les plateformes de mise en relation (travaux.com, etc.)\n- Sous-traitance : proposez vos services a des entreprises generales etablies\n- Presence locale : carte de visite, vehicule sigle, bouche-a-oreille\n- Site web et referencement local (Google Business Profile)\n- Partenariats avec architectes, maitres d'oeuvre et promoteurs\n\nConcentrez-vous sur la qualite de vos premieres realisations : dans le BTP, la reputation se construit chantier apres chantier.",
+    "step7Title": "Outils numeriques et configuration de ConductorOS",
+    "step7Description": "Equipez-vous des bons outils numeriques pour gagner du temps des le premier jour :\n\n- ConductorOS : Centralisez vos emails, appels d'offres, contrats et PV de chantier. L'IA analyse vos documents et redige vos reponses automatiquement.\n- Connectez votre messagerie professionnelle (Gmail ou Outlook) pour le tri et la reponse automatique par IA\n- Utilisez l'analyse PDF pour decrypter les appels d'offres et extraire les lots pertinents\n- Generez vos PV de reception de chantier en quelques clics\n- Suivez votre planning et vos affaires depuis un tableau de bord unique\n- Collaborez avec vos fournisseurs directement depuis la plateforme\n\nAccedez aux parametres pour configurer votre entreprise et commencer a utiliser toutes les fonctionnalites.",
+    "ctaTitle": "Pret a vous lancer ? ConductorOS automatise votre administratif des le premier jour.",
+    "ctaButton": "Configurer mon entreprise"
+  },
+  "distribution": {
+    "title": "Stratégie de distribution",
+    "intro": "Guide complet pour développer la visibilité et acquérir de nouveaux clients dans le secteur du BTP. Appliquez ces stratégies pour maximiser votre croissance commerciale.",
+    "strategies": {
+      "digitalPresence": {
+        "title": "Présence digitale",
+        "actions": {
+          "0": "Créer un site web professionnel avec portfolio de réalisations",
+          "1": "Optimiser votre fiche Google Business avec photos et avis",
+          "2": "Publier régulièrement sur LinkedIn et Facebook",
+          "3": "Référencer votre entreprise sur les annuaires spécialisés BTP"
+        }
+      },
+      "professionalNetwork": {
+        "title": "Réseau professionnel",
+        "actions": {
+          "0": "Développer des partenariats avec architectes et maîtres d'œuvre",
+          "1": "Entretenir les relations avec vos sous-traitants de confiance",
+          "2": "Participer aux salons et événements du secteur",
+          "3": "Rejoindre des associations professionnelles (FFB, CAPEB)"
+        }
+      },
+      "commercialProspection": {
+        "title": "Prospection commerciale",
+        "actions": {
+          "0": "Surveiller les appels d'offres publics et privés",
+          "1": "Démarcher directement les promoteurs immobiliers",
+          "2": "Proposer des devis gratuits pour les projets qualifiés",
+          "3": "Mettre en place un CRM pour suivre vos prospects"
+        }
+      },
+      "reputation": {
+        "title": "Réputation et avis",
+        "actions": {
+          "0": "Solliciter systématiquement les avis Google après chaque chantier",
+          "1": "Créer des études de cas détaillées de vos projets",
+          "2": "Répondre à tous les avis (positifs et négatifs)",
+          "3": "Afficher vos certifications et labels qualité (RGE, Qualibat)"
+        }
+      },
+      "contentMarketing": {
+        "title": "Marketing de contenu",
+        "actions": {
+          "0": "Rédiger des articles de blog sur votre expertise métier",
+          "1": "Publier des vidéos avant/après de vos chantiers",
+          "2": "Partager des témoignages clients en format vidéo",
+          "3": "Créer des guides pratiques pour vos clients potentiels"
+        }
+      },
+      "paidAdvertising": {
+        "title": "Publicité payante",
+        "actions": {
+          "0": "Lancer des campagnes Google Ads sur des mots-clés locaux",
+          "1": "Cibler les propriétaires via Facebook et Instagram Ads",
+          "2": "Investir dans le référencement local payant",
+          "3": "Tester les campagnes sur les plateformes spécialisées BTP"
+        }
+      }
+    },
+    "metrics": {
+      "title": "Indicateurs clés à suivre",
+      "description": "Mesurez l'efficacité de votre stratégie de distribution avec ces indicateurs de performance.",
+      "websiteVisitors": {
+        "value": "500+",
+        "label": "Visiteurs mensuels",
+        "description": "Objectif de trafic site web après 6 mois"
+      },
+      "leadsGenerated": {
+        "value": "30-50",
+        "label": "Leads par mois",
+        "description": "Demandes de devis et contacts qualifiés"
+      },
+      "proposalsSent": {
+        "value": "15-20",
+        "label": "Devis envoyés",
+        "description": "Propositions commerciales mensuelles"
+      },
+      "conversionRate": {
+        "value": "25-35%",
+        "label": "Taux de conversion",
+        "description": "Devis signés / devis envoyés"
+      },
+      "funnelLabel": "Entonnoir de conversion",
+      "funnelDescription": "Visiteurs → Leads → Devis → Clients : optimisez chaque étape pour maximiser vos résultats."
+    }
+  },
+  "roadmap": {
+    "title": "Feuille de route produit",
+    "subtitle": "Vision et planification du développement de ConductorOS",
+    "statuses": {
+      "done": "Terminé",
+      "inProgress": "En cours",
+      "planned": "Planifié"
+    },
+    "phases": {
+      "q1": {
+        "quarter": "T1 2026",
+        "title": "Plateforme principale",
+        "status": "done",
+        "features": {
+          "0": "Email IA — classification et réponse automatique",
+          "1": "Analyse PDF — extraction triple couche",
+          "2": "Analyse de contrats — résumé et alertes"
+        }
+      },
+      "q2": {
+        "quarter": "T2 2026",
+        "title": "Fonctionnalités avancées",
+        "status": "inProgress",
+        "features": {
+          "0": "Intégration planning chantier",
+          "1": "Gestion des fournisseurs",
+          "2": "Application mobile"
+        }
+      },
+      "q3": {
+        "quarter": "T3 2026",
+        "title": "Entreprise",
+        "status": "planned",
+        "features": {
+          "0": "Support multi-organisations",
+          "1": "Modèles IA personnalisés",
+          "2": "Accès API"
+        }
+      },
+      "q4": {
+        "quarter": "T4 2026",
+        "title": "Passage à l'échelle",
+        "status": "planned",
+        "features": {
+          "0": "Solution marque blanche",
+          "1": "Marketplace d'intégrations",
+          "2": "Expansion internationale"
+        }
+      }
+    }
   }
 }

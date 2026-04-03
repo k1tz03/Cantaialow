@@ -17,6 +17,7 @@ import {
   Settings,
   Shield,
   BookOpen,
+  Megaphone,
   X,
 } from "lucide-react";
 
@@ -38,6 +39,7 @@ const navItems = [
   { href: "/assistant", icon: Bot, labelKey: "assistant" as const },
   { href: "/settings", icon: Settings, labelKey: "settings" as const },
   { href: "/guide", icon: BookOpen, labelKey: "guide" as const },
+  { href: "/distribution", icon: Megaphone, labelKey: "distribution" as const },
 ];
 
 const adminItems = [
@@ -47,6 +49,7 @@ const adminItems = [
   { href: "/admin/prompts", icon: FileText, labelKey: "prompts" as const },
   { href: "/admin/config", icon: Settings, labelKey: "config" as const },
   { href: "/admin/audit", icon: ScrollText, labelKey: "audit" as const },
+  { href: "/admin/roadmap", icon: Megaphone, labelKey: "roadmap" as const },
 ];
 
 export function Sidebar({ open, onClose, isAdmin }: SidebarProps) {

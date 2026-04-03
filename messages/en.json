@@ -68,7 +68,8 @@
     "assistant": "AI Assistant",
     "settings": "Settings",
     "admin": "Administration",
-    "guide": "Guide"
+    "guide": "Guide",
+    "distribution": "Distribution"
   },
   "dashboard": {
     "welcome": "Welcome, {name}",
@@ -301,6 +302,7 @@
     "prompts": "AI Prompts",
     "config": "Configuration",
     "audit": "Audit log",
+    "roadmap": "Roadmap",
     "totalUsers": "Total users",
     "activeUsers": "Active this month",
     "mrr": "MRR",
@@ -330,5 +332,162 @@
     "uploadFailed": "Upload failed. Please try again.",
     "networkError": "Network error. Check your connection.",
     "sessionExpired": "Your session has expired. Please log in again."
+  },
+  "distribution": {
+    "title": "Distribution Strategy",
+    "intro": "A comprehensive guide to growing your visibility and acquiring new clients in the construction industry. Apply these strategies to maximize your business growth.",
+    "strategies": {
+      "digitalPresence": {
+        "title": "Digital Presence",
+        "actions": {
+          "0": "Build a professional website showcasing your project portfolio",
+          "1": "Optimize your Google Business profile with photos and reviews",
+          "2": "Post regularly on LinkedIn and Facebook",
+          "3": "List your company on specialized construction directories"
+        }
+      },
+      "professionalNetwork": {
+        "title": "Professional Network",
+        "actions": {
+          "0": "Build partnerships with architects and project managers",
+          "1": "Maintain strong relationships with trusted subcontractors",
+          "2": "Attend industry trade shows and networking events",
+          "3": "Join professional associations and trade groups"
+        }
+      },
+      "commercialProspection": {
+        "title": "Commercial Prospection",
+        "actions": {
+          "0": "Monitor public and private tenders regularly",
+          "1": "Reach out directly to property developers",
+          "2": "Offer free estimates for qualified projects",
+          "3": "Implement a CRM to track your sales pipeline"
+        }
+      },
+      "reputation": {
+        "title": "Reputation & Reviews",
+        "actions": {
+          "0": "Systematically request Google reviews after each project",
+          "1": "Create detailed case studies of your best projects",
+          "2": "Respond to all reviews (positive and negative)",
+          "3": "Display your certifications and quality labels prominently"
+        }
+      },
+      "contentMarketing": {
+        "title": "Content Marketing",
+        "actions": {
+          "0": "Write blog articles showcasing your trade expertise",
+          "1": "Publish before/after videos of your construction sites",
+          "2": "Share client testimonials in video format",
+          "3": "Create practical guides for potential clients"
+        }
+      },
+      "paidAdvertising": {
+        "title": "Paid Advertising",
+        "actions": {
+          "0": "Run Google Ads campaigns targeting local keywords",
+          "1": "Target property owners via Facebook and Instagram Ads",
+          "2": "Invest in paid local search rankings",
+          "3": "Test campaigns on specialized construction platforms"
+        }
+      }
+    },
+    "metrics": {
+      "title": "Key Metrics to Track",
+      "description": "Measure the effectiveness of your distribution strategy with these key performance indicators.",
+      "websiteVisitors": {
+        "value": "500+",
+        "label": "Monthly visitors",
+        "description": "Website traffic target after 6 months"
+      },
+      "leadsGenerated": {
+        "value": "30-50",
+        "label": "Leads per month",
+        "description": "Quote requests and qualified contacts"
+      },
+      "proposalsSent": {
+        "value": "15-20",
+        "label": "Proposals sent",
+        "description": "Monthly commercial proposals"
+      },
+      "conversionRate": {
+        "value": "25-35%",
+        "label": "Conversion rate",
+        "description": "Signed quotes / quotes sent"
+      },
+      "funnelLabel": "Conversion funnel",
+      "funnelDescription": "Visitors → Leads → Proposals → Clients: optimize each step to maximize your results."
+    }
+  },
+  "roadmap": {
+    "title": "Product Roadmap",
+    "subtitle": "ConductorOS development vision and planning",
+    "statuses": {
+      "done": "Done",
+      "inProgress": "In Progress",
+      "planned": "Planned"
+    },
+    "phases": {
+      "q1": {
+        "quarter": "Q1 2026",
+        "title": "Core Platform",
+        "status": "done",
+        "features": {
+          "0": "Email AI — classification and automatic reply",
+          "1": "PDF Analysis — triple-layer extraction",
+          "2": "Contract Analysis — summary and alerts"
+        }
+      },
+      "q2": {
+        "quarter": "Q2 2026",
+        "title": "Advanced Features",
+        "status": "inProgress",
+        "features": {
+          "0": "Planning integration",
+          "1": "Supplier management",
+          "2": "Mobile app"
+        }
+      },
+      "q3": {
+        "quarter": "Q3 2026",
+        "title": "Enterprise",
+        "status": "planned",
+        "features": {
+          "0": "Multi-org support",
+          "1": "Custom AI models",
+          "2": "API access"
+        }
+      },
+      "q4": {
+        "quarter": "Q4 2026",
+        "title": "Scale",
+        "status": "planned",
+        "features": {
+          "0": "White-label solution",
+          "1": "Integration marketplace",
+          "2": "International expansion"
+        }
+      }
+    }
+  },
+  "guide": {
+    "title": "Construction Company Creation Guide",
+    "subtitle": "All the steps to create your construction company in France, from legal status to your first projects.",
+    "step1Title": "Choose your legal status",
+    "step1Description": "Choosing the right legal status is the first key decision. Here are the main options:\n\n- SARL: Limited liability, minimum 2 partners. Ideal for partnerships with flexible share capital. Social charges around 45%.\n- SAS: Highly flexible bylaws, president treated as employee. Perfect for raising funds or bringing in investors.\n- EURL: Single-partner version of SARL, one sole partner. Good personal asset protection.\n- EI (Sole Proprietorship): Simple to set up, no minimum capital. Note: unlimited personal liability.\n- Auto-entrepreneur (micro-enterprise): Quick start, simplified accounting. Revenue cap at 77,700 EUR (services). Ideal for testing the market.\n\nConsult an accountant to choose the status best suited to your personal situation and growth ambitions.",
+    "step2Title": "Business plan and financial projections",
+    "step2Description": "A solid business plan is essential to convince banks and structure your business.\n\nKey elements:\n- Executive summary of your project\n- Local market study (competition, demand, pricing)\n- 3-year revenue forecasts\n- Monthly cash flow plan (payment delays are common in construction)\n- Investment needs: vehicles, tools, PPE, software\n- Break-even calculation\n\nIn construction, plan for substantial working capital. Payment delays can reach 60 days or more, especially with public contracts.",
+    "step3Title": "Registration and administrative procedures",
+    "step3Description": "Administrative steps to officially create your company:\n\n1. Draft the company bylaws (or business declaration for sole proprietorship/auto-entrepreneur)\n2. Deposit share capital at the bank\n3. Publish a legal notice in an authorized journal\n4. Register your company at the commercial court registry\n5. Obtain your Kbis extract (company identity card)\n6. Receive your SIRET number and APE code\n7. Register with the Chamber of Trades if artisanal activity\n\nAlso remember to open a dedicated professional bank account and take out mandatory insurance before starting operations.",
+    "step4Title": "Get required insurance",
+    "step4Description": "In construction, insurance is non-negotiable and required by law:\n\n- RC Pro (Professional Liability Insurance): Covers damage caused to third parties during your services. Mandatory before any project.\n- Decennial insurance: Mandatory for all builders. Covers construction defects for 10 years after project handover. Without it, you cannot legally operate.\n- Professional vehicle insurance: For your utility vehicles and site equipment.\n- Multi-risk professional insurance: Protects your premises, equipment, and stock.\n\nCompare at least 3 quotes. Premiums vary based on your trade, projected revenue, and experience. Annual budget to plan: 3,000 to 15,000 EUR depending on activity.",
+    "step5Title": "Set up accounting and invoicing",
+    "step5Description": "Rigorous accounting is essential in construction:\n\n- Choose an accountant specializing in construction (they understand specifics: progress billing, retention guarantees, subcontracting)\n- Set up compliant invoicing software (mandatory mentions, reverse-charge VAT for subcontracting)\n- Manage your quotes precisely: lot details, payment terms, validity\n- Track your cash flow daily: payment delays are the number one risk\n- Anticipate VAT: simplified or standard regime depending on your revenue\n- Set up per-project analytical tracking to know your real profitability\n\nAccountant budget: 150 to 500 EUR/month depending on complexity.",
+    "step6Title": "Find your first clients and contracts",
+    "step6Description": "Strategies to land your first contracts:\n\n- Personal and professional network: inform friends, former colleagues, project managers\n- Respond to public tenders (online markets, dematerialization platforms)\n- Register on connection platforms (specialist directories, etc.)\n- Subcontracting: offer your services to established general contractors\n- Local presence: business cards, branded vehicle, word of mouth\n- Website and local SEO (Google Business Profile)\n- Partnerships with architects, project managers, and developers\n\nFocus on the quality of your first projects: in construction, reputation is built project by project.",
+    "step7Title": "Digital tools and ConductorOS setup",
+    "step7Description": "Equip yourself with the right digital tools to save time from day one:\n\n- ConductorOS: Centralize your emails, tenders, contracts, and completion reports. AI analyzes your documents and drafts your responses automatically.\n- Connect your professional email (Gmail or Outlook) for automatic AI sorting and replies\n- Use PDF analysis to decode tenders and extract relevant lots\n- Generate your project completion reports in just a few clicks\n- Track your schedule and projects from a single dashboard\n- Collaborate with your suppliers directly from the platform\n\nGo to settings to configure your company and start using all features.",
+    "ctaTitle": "Ready to start? ConductorOS automates your admin from day one.",
+    "ctaButton": "Configure my company"
   }
 }

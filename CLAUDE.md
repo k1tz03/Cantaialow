@@ -33,10 +33,10 @@ src/
     db.ts         - Prisma client singleton
     utils.ts      - cn() utility
     fonts.ts      - font configuration
-    ai/           - Claude API wrappers (TODO)
-    email/        - Gmail/Outlook connectors (TODO)
-    pdf/          - Triple-layer PDF processing (TODO)
-    stripe/       - Stripe integration (TODO)
+    ai/           - Claude API wrappers (callAi, streamAi, getPrompt)
+    email/        - Gmail/Outlook connectors (sync, classify, reply)
+    pdf/          - Triple-layer PDF processing (parse → fallback → Vision OCR)
+    stripe/       - Stripe integration (checkout, portal, webhooks)
   i18n.ts         - next-intl configuration
   middleware.ts   - i18n middleware
 messages/         - fr.json, en.json, es.json, pt.json
@@ -75,13 +75,11 @@ See `.env.example` for all required variables.
 
 ## Build Status
 - [x] Phase 1: Foundations (Next.js, Tailwind, Prisma, NextAuth, Layout, i18n)
-- [ ] Phase 2: Email module
-- [ ] Phase 3: PDF analysis
-- [ ] Phase 4: Business features
-- [ ] Phase 5: AI learning
-- [ ] Phase 6: Auth, accounts, Stripe
-- [ ] Phase 7: Super Admin
-- [ ] Phase 8: Landing page
+- [x] Phase 2: Email module (Gmail/Outlook, AI classification, AI reply with streaming)
+- [x] Phase 3: PDF analysis (triple-layer extraction, AO/contract analysis, PV generation)
+- [x] Phase 4-6: Business features, Settings, Stripe, AI assistant
+- [x] Phase 7: Super Admin (dashboard, users, prompts, costs, audit, config)
+- [x] Phase 8: Landing page (hero, features, pricing, FAQ, CTA)
 - [ ] Phase 9: SEO
 - [ ] Phase 10: Company creation guide
 - [ ] Phase 11: Distribution strategy guide

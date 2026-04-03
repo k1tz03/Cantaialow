@@ -7,10 +7,13 @@ export default async function LandingLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getServerSession(authOptions);
-
-  if (session) {
-    redirect("/dashboard");
+  try {
+    const session = await getServerSession(authOptions);
+    if (session) {
+      redirect("/dashboard");
+    }
+  } catch {
+    // If auth check fails (missing env vars), show landing page anyway
   }
 
   return <>{children}</>;

@@ -80,8 +80,8 @@ See `.env.example` for all required variables.
 - [x] Phase 4-6: Business features, Settings, Stripe, AI assistant
 - [x] Phase 7: Super Admin (dashboard, users, prompts, costs, audit, config)
 - [x] Phase 8: Landing page (hero, features, pricing, FAQ, CTA)
-- [ ] Phase 9: SEO
-- [ ] Phase 10: Company creation guide
-- [ ] Phase 11: Distribution strategy guide
-- [ ] Phase 12: Growth roadmap (admin only)
-- [ ] Phase 13: Final testing
+- [x] Phase 9: SEO (next-sitemap, robots.txt, Open Graph, JSON-LD)
+- [x] Phase 10: Company creation guide (7-step accordion)
+- [x] Phase 11: Distribution strategy guide (6 marketing channels)
+- [x] Phase 12: Growth roadmap (admin, Q1-Q4 2026 timeline)
+- [x] Phase 13: Testing (Vitest, 20 unit tests, 4 test suites)

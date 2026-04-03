@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { NextResponse } from "next/server";
 import { exchangeOutlookCode } from "@/lib/email/outlook";
 import { prisma } from "@/lib/db";
